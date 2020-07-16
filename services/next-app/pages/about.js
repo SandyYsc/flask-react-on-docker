@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import axios from '@/utils/axios'
-import { useAxios } from '@/utils/axios'
 
 export async function getServerSideProps() {
   const { data } = await axios('/')
@@ -14,12 +13,6 @@ export async function getServerSideProps() {
 
 export default function Home() {
 
-  const [{ data, loading, error }, refetch] = useAxios('/')
-  
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
-  console.log(data)
-  
   return (
     <div className="container">
       <Head>
@@ -31,8 +24,8 @@ export default function Home() {
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <Link href="/about">
-          <a>About</a>
+        <Link href="/">
+          <a>Home</a>
         </Link>
         <p className="description">
           Get started by editing <code>pages/index.js</code>
