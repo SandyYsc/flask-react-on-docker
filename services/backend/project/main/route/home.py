@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify
-from project.main.model.task import Task
+from project.main.service import task_service
 
 home_routes = Blueprint('home_routes', __name__)
 
 @home_routes.route('/')
-def hello_world():
-    return jsonify(hello="world")
+def home():
+    records = task_service.query_all()
+    return jsonify(records)

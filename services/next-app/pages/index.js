@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import axios from '@/utils/axios'
-import { useAxios } from '@/utils/axios'
+import { default as axios, useAxios } from '@/utils/axios'
 
 export async function getServerSideProps() {
   const { data } = await axios('/')
@@ -12,14 +11,14 @@ export async function getServerSideProps() {
   return { props: {} }
 }
 
-export default function Home() {
+export default function Home(props) {
 
   const [{ data, loading, error }, refetch] = useAxios('/')
   
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
   console.log(data)
-  
+
   return (
     <div className="container">
       <Head>
