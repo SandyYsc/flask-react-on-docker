@@ -9,7 +9,6 @@ CORS(app)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-from project.main.route import home, task
-app.register_blueprint(home.home_routes)
+from project.main.route import task
 app.register_blueprint(task.task_routes)
 
